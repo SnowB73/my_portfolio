@@ -1,4 +1,4 @@
-/* index.css */
+/* --- 1. 변수 및 초기화 --- */
 :root {
   --primary: #2563eb;
   --dark: #1e293b;
@@ -6,56 +6,83 @@
   --white: #ffffff;
   --gray: #64748b;
   --border: #e2e8f0;
+  --header-h: 60px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { font-family: sans-serif; background-color: var(--light); color: var(--dark); line-height: 1.6; }
+body { background-color: var(--light); color: var(--dark); font-family: sans-serif; line-height: 1.6; }
 
-.container { width: 100%; max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+/* 공통 컨테이너 */
+.container, #home {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
 
 /* Header */
-.main-header { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 1000; }
-.nav-links { display: flex; justify-content: center; list-style: none; padding: 1rem 0; gap: 1.5rem; }
-.nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.9rem; }
-
-/* Section */
-.section-container { min-height: 100vh; display: flex; align-items: center; padding: 100px 0; }
-.section-title { font-size: 2.2rem; margin-bottom: 3rem; text-align: center; }
-
-/* Hero */
-.hero-container { width: 100%; }
-.hero-name { font-size: clamp(2.5rem, 8vw, 4rem); color: var(--primary); }
-.hero-edu { background: var(--white); padding: 1.5rem; border-radius: 12px; margin: 2rem 0; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-.cta-button { display: inline-block; padding: 0.8rem 2rem; background: var(--primary); color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
-
-/* Projects (세로 정렬) */
-.project-list { display: grid; grid-template-columns: 1fr; gap: 2.5rem; width: 100%; }
-.project-card { background: var(--white); padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); display: flex; flex-direction: column; border: 1px solid var(--border); }
-.project-title { font-size: 1.6rem; margin-bottom: 15px; }
-.project-desc { font-size: 1rem; color: var(--gray); margin-bottom: 2rem; }
-.project-ranks { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
-.rank-badge { font-size: 0.75rem; padding: 5px 12px; border-radius: 6px; background: #f1f5f9; color: var(--primary); font-weight: 700; white-space: nowrap; }
-.project-links { display: flex; flex-wrap: wrap; gap: 12px; padding-top: 20px; border-top: 1px solid var(--border); }
-.link-btn { text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 8px 16px; border: 1.5px solid var(--primary); color: var(--primary); border-radius: 6px; transition: 0.2s; }
-.link-btn:hover { background: var(--primary); color: white; }
-
-/* 🚨 Contact 전용 스타일 */
-.contact-info { text-align: center; font-size: 1.2rem; width: 100%; }
-.contact-link {
-  display: inline-block;
-  margin: 0 10px;
-  padding: 10px 25px;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 50px;
-  text-decoration: none;
-  color: var(--dark);
-  font-weight: 600;
-  transition: 0.3s;
+.main-header {
+  position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h);
+  background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border); z-index: 1000;
+  display: flex; align-items: center;
 }
-.contact-link:hover {
-  background: var(--dark);
-  color: var(--white);
-  transform: translateY(-3px);
+.nav-links { display: flex; justify-content: center; list-style: none; gap: 2rem; width: 100%; }
+.nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.95rem; }
+.nav-links a:hover { color: var(--primary); }
+
+/* Hero 섹션: 세로 중앙 & 좌측 정렬 */
+#home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.hero-name {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  color: var(--primary);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem; /* 🚨 name과 major 사이 한 칸 간격 추가 */
+}
+
+.hero-major { font-size: 1.2rem; font-weight: 700; color: var(--dark); }
+
+.hero-title { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; margin-top: 1rem; }
+.hero-subtitle { font-size: 1.2rem; color: var(--gray); max-width: 600px; }
+
+.cta-button {
+  display: inline-block; padding: 12px 28px; background: var(--primary);
+  color: white; text-decoration: none; border-radius: 6px; font-weight: bold;
+  margin-top: 1.5rem; transition: background 0.2s;
+}
+.cta-button:hover { background: #1d4ed8; }
+
+/* 공통 섹션 스타일 */
+.py-20 { padding: 100px 0; }
+.section-title { font-size: 2rem; margin-bottom: 2.5rem; border-left: 5px solid var(--primary); padding-left: 15px; font-weight: 800; }
+.card { background: var(--white); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+
+/* Projects */
+.project-list { display: flex; flex-direction: column; gap: 2.5rem; }
+.project-card { border: 1px solid var(--border); }
+.project-ranks { display: flex; gap: 8px; margin: 15px 0; flex-wrap: wrap; }
+.rank-badge {
+  font-size: 0.75rem; padding: 4px 10px; background: #eff6ff; color: var(--primary);
+  font-weight: bold; border-radius: 4px; white-space: nowrap;
+}
+.project-links { display: flex; gap: 10px; border-top: 1px solid var(--border); padding-top: 15px; }
+.link-btn { text-decoration: none; font-size: 0.85rem; font-weight: bold; padding: 6px 15px; border: 1.5px solid var(--primary); color: var(--primary); border-radius: 4px; }
+
+/* Contact & Footer */
+.contact-info { text-align: center; }
+.contact-link { display: inline-block; margin: 10px; padding: 10px 25px; border: 1px solid var(--border); border-radius: 50px; text-decoration: none; color: var(--dark); font-weight: 600; }
+.main-footer { text-align: center; padding: 4rem 0; color: var(--gray); font-size: 0.9rem; border-top: 1px solid var(--border); }
+
+@media (max-width: 768px) {
+  #home { padding-left: 1.5rem; padding-right: 1.5rem; }
 }
